@@ -33,6 +33,9 @@ export default function SearchSection() {
     <>
       <div className="background" />
       <section>
+        <div className="album-details">
+          <h1 className="gradient_text">moodySpotify</h1>
+        </div>
         <input
           className="search-container_search1"
           type="text"
@@ -47,9 +50,7 @@ export default function SearchSection() {
           }}
         />
         {loading && <LinearProgress />}
-        <div className="album-details">
-          <h1>moodySpotify</h1>
-        </div>
+
         {!loading && (
           <>
             <div className="album-details">

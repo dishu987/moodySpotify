@@ -4,3 +4,5 @@ body {
     overflow-x: hidden !important;
     scroll-behavior: smooth !important;
 }
+
+@import url("https://cdn.plyr.io/3.7.8/plyr.css");

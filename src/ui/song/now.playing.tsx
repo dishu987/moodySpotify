@@ -5,17 +5,22 @@ import "./../search/search.css";
 import { convertDuration } from "../../utils/duration";
 import { Link } from "react-router-dom";
 import ShareIcon from "@mui/icons-material/Share";
+import WebPlayback from "./player";
 
-const AudioPlayer: React.FC = ({ data, loading }: any) => {
+interface T {
+  track: any;
+  loading: boolean;
+}
+const AudioPlayer: React.FC<T> = ({ track, loading }) => {
   const handleShare = (url: string) => {
     if (navigator.share) {
-      const shareData = {
+      const sharetrack = {
         title: "Shared Link",
         text: "Open Spotify",
         url: url,
       };
       navigator
-        .share(shareData)
+        .share(sharetrack)
         .then(() => {
           console.log("Shared successfully");
         })
@@ -36,20 +41,20 @@ const AudioPlayer: React.FC = ({ data, loading }: any) => {
               src={
                 loading
                   ? "https://68.media.tumblr.com/avatar_edbd71e8c8ac_128.png"
-                  : data?.album?.images[0]?.url
+                  : track?.album?.images[0]?.url
               }
             />
-            {data?.name}{" "}
+            {track?.name}{" "}
           </h2>
-          <h1>{data?.name}</h1>
+          <h1>{track?.name}</h1>
           <span>
             {" "}
-            <span>{convertDuration(data?.duration_ms)} </span>
+            <span>{convertDuration(track?.duration_ms)} </span>
           </span>
           <p>
             <Link
               to="#"
-              onClick={() => handleShare(data?.external_urls?.spotify)}
+              onClick={() => handleShare(track?.external_urls?.spotify)}
               target="_blank"
             >
               <ShareIcon />

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import SpotifyAlbumService from "../../services/spotify/album.spotify";
 import im from "./../../assets/search-bg.jpg";
+import WebPlayback from "./player";
 
 const ViewSong = () => {
   const [info, setInfo] = useState<any>(null);
@@ -20,6 +21,7 @@ const ViewSong = () => {
       try {
         const res = await SpotifyAlbumService.track(id, token);
         setInfo(res.data);
+        console.log("info", info);
         console.log(res.data);
       } catch (err) {
         console.log(err);
@@ -58,7 +60,9 @@ const ViewSong = () => {
               </Button>
             </div>
           </div>
-          <AudioPlayer data={info} loading={loading} />
+          <AudioPlayer track={info} loading={loading} />
+          {loading && "Loading...."}
+          {!loading && <WebPlayback current_track={info.name} />}
         </div>
       </section>
     </>

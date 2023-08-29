@@ -93,3 +93,23 @@ a {
     -moz-box-shadow: 0px 0px 19px -5px rgba(255, 255, 255, 1);
     box-shadow: 0px 0px 19px -5px rgba(255, 255, 255, 1);
 }
+
+.gradient_text {
+    background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+    /* background: linear-gradient(to right, #1DB954, #1DB954 25%, #191414 25%, #191414 50%, #1DB954 50%, #1DB954 75%, #191414 75%, #191414); */
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Add this line for cross-browser support */
+    animation: gradient_pos 4s linear infinite;
+    font-size: 6rem;
+}
+
+@keyframes gradient_pos {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
